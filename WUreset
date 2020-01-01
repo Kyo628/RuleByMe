@@ -1,0 +1,12 @@
+net stop usosvc
+net stop dosvc
+net stop wuauserv
+net stop bits
+move %SystemRoot%\SoftwareDistribution %SystemRoot%\SoftwareDistribution.old
+del %ALLUSERSPROFILE%\Microsoft\Network\Downloader\qmgr0.dat
+del %ALLUSERSPROFILE%\Microsoft\Network\Downloader\qmgr1.dat
+net start bits
+net start wuauserv
+net start dosvc
+net start usosvc
+%SystemRoot%\system32\usoclient.exe StartScan
